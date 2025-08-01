@@ -1,1 +1,1 @@
-# Sanctum Black - Technical Blog
+# Rhodium Website
