@@ -1,0 +1,13 @@
+{{- $key := .key -}}
+{{- $items := index site.Data $key -}}
+<div class="mosaic-grid">
+  {{ range $items }}
+    <div class="mosaic-card">
+      <h3 class="mosaic-title">{{ .title }}</h3>
+      <p class="mosaic-desc">{{ .description }}</p>
+      <a href="{{ .buttonURL }}" class="btn btn--primary"
+        >{{ .buttonText }}</a
+      >
+    </div>
+  {{ end }}
+</div>

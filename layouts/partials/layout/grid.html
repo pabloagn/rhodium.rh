@@ -1,0 +1,13 @@
+<div class="grid {{ .class }}">
+  {{ range .Pages }}
+    {{ $section := .Section }}
+    {{ if eq $section "projects" }}
+      {{ partial "cards/project.html" . }}
+    {{ else if eq $section "tools" }}
+      {{ partial "cards/tool.html" . }}
+    {{ else }}
+      {{ partial "cards/post.html" . }}
+    {{ end }}
+  {{ end }}
+</div>
+

@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ partial "about/lead.html" . }}
+  <div class="content-section container-top single-page">
+    <section class="about-columns">
+      {{ partial "about/motivations.html" . }}
+      {{ partial "about/professional.html" . }}
+      {{ partial "about/academic.html" . }}
+      {{ partial "about/stack.html" . }}
+      {{ partial "about/certifications.html" . }}
+    </section>
+
+    <div class="about-footer">
+      {{ partial "about/epigraph.html" . }}
+    </div>
+  </div>
+{{ end }}

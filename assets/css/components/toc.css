@@ -1,0 +1,242 @@
+/* Table‑of‑Contents */
+.toc {
+  background-color: var(--bg-primary) !important;
+  border: 1px solid var(--fg-muted-darker);
+  border-radius: var(--radius-default) !important;
+  padding: 0;
+  margin: var(--space-lg) 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.toc-header {
+  background-color: transparent;
+  padding: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--fg-muted-darker);
+}
+
+.toc-title {
+  color: var(--fg-primary);
+  font-size: var(--text-lg);
+  margin: 0;
+  font-weight: 500;
+}
+
+.toc-toggle {
+  background: none;
+  border: none;
+  color: var(--fg-primary);
+  cursor: pointer;
+  font-size: var(--text-lg);
+  padding: var(--space-xs);
+  border-radius: var(--radius-default);
+  transition: all var(--transition-default) ease;
+  font-family: var(--font-code);
+}
+
+.toc-toggle:hover {
+  color: var(--accent-blue);
+}
+
+/* .toc-content { */
+/*   padding: var(--space-sm); */
+/*   max-height: 600px; */
+/*   overflow-y: auto; */
+/*   transition: */
+/*     max-height var(--transition-default) ease, */
+/*     opacity var(--transition-default) ease; */
+/* } */
+/**/
+/* .toc-content.collapsed { */
+/*   max-height: 0; */
+/*   opacity: 0; */
+/*   padding: 0; */
+/* } */
+
+.toc-content {
+  padding: var(--space-sm);
+  max-height: 600px;
+  overflow-y: auto;
+  transition:
+    max-height var(--transition-default) ease,
+    opacity var(--transition-default) ease;
+  height: auto !important; /* Critical fix - prevents height:100% override */
+}
+
+.toc-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.toc-link {
+  align-items: baseline;
+  border: none;
+  color: var(--fg-secondary);
+  display: flex;
+  padding: 2px 0;
+  position: relative;
+  transition: transform 0.2s ease;
+  z-index: 2;
+}
+
+.toc-link:hover {
+  color: var(--accent-blue);
+  transition: all var(--transition-default);
+  text-decoration-color: var(--accent-blue);
+  text-decoration: underline;
+}
+
+.toc-connector {
+  color: var(--accent-blue);
+  white-space: pre;
+  font-family: var(--font-code);
+  user-select: none;
+}
+
+/* Bullets */
+.toc-bullet {
+  opacity: 1;
+  font-family: var(--font-body);
+  color: var(--accent-yellow);
+  margin: 0 0.75rem 0 0.5rem;
+}
+
+/* .toc-level-2 .toc-bullet::before { */
+/*   content: "◆"; */
+/*   color: var(--fg-primary); */
+/* } */
+/* .toc-level-3 .toc-bullet::before { */
+/*   content: "◇"; */
+/*   color: var(--fg-primary); */
+/* } */
+/* .toc-level-4 .toc-bullet::before { */
+/*   content: "◈"; */
+/*   color: var(--fg-primary); */
+/* } */
+
+.toc-text {
+  color: var(--fg-secondary);
+  transition: color 0.2s ease;
+}
+
+/* Indentation */
+/* Remove bullets */
+.toc-content ul,
+.toc-content ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Proper indentation for nested levels */
+/* .toc-content li { */
+/*   padding-left: 1rem; */
+/* } */
+/**/
+/* .toc-content ul ul li { */
+/*   padding-left: 1.5rem; */
+/* } */
+/**/
+/* .toc-content ul ul ul li { */
+/*   padding-left: 2rem; */
+/* } */
+/**/
+/* .toc-content ul ul ul ul li { */
+/*   padding-left: 2.5rem; */
+/* } */
+
+/* Anchor spacing */
+.toc-content li > a {
+  display: block;
+  padding: 0.25rem 0;
+}
+
+/* TOC Fading */
+.toc-scroll-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.toc-content {
+  overflow-y: auto;
+  height: 100%;
+  padding: var(--space-sm);
+}
+
+.toc-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.toc-fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6rem;
+  width: 100%;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(to top, var(--bg-primary), transparent);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.toc-scroll-wrapper.hide-fade .toc-fade-bottom {
+  opacity: 0;
+}
+
+.ascii-toc {
+  font-family: var(--font-code, monospace);
+  /* white-space: pre; */
+  /* font-size: var(--font-size-xs); */
+  line-height: 1;
+}
+
+.ascii-line {
+  display: block;
+  white-space: pre;
+  color: var(--fg-secondary);
+  text-decoration: none;
+  padding: 0 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.ascii-line:hover {
+  background-color: var(--bg-hover);
+}
+
+.ascii-line:hover .ascii-label {
+  color: var(--accent-blue);
+  text-decoration: underline;
+}
+
+.ascii-prefix {
+  color: var(--fg-muted-darker);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ascii-label {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* NOTE: Use this approach for background mode */
+
+/* .ascii-line:hover { */
+/*   background-color: var(--accent-blue) !important; */
+/* } */
+
+/* .ascii-line:hover .ascii-label { */
+/*   color: var(--bg-primary); */
+/*   text-decoration: underline; */
+/* } */

@@ -1,0 +1,86 @@
+# --- General ---
+baseURL = "https://rhodium.solenoidlabs.com"
+languageCode = "en-us"
+title = "Rhodium"
+
+# --- Build Settings ---
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableGitInfo = true
+enableRobotsTXT = true
+
+# --- Output Formats ---
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+page = ["HTML"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
+
+[pagination]
+pagerSize = 12
+
+# --- Menu Configuration ---
+[menu]
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 10
+
+[[menu.main]]
+name = "Docs"
+url = "/docs/"
+weight = 20
+
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 30
+
+[[menu.main]]
+name = "Contact"
+url = "/contact/"
+weight = 40
+
+# --- Site Parameters ---
+[params]
+description = "Rhodium - A Hypermodular NixOS System"
+author = "Pablo Aguirre"
+email = "pabloaguirrenck@protonmail.ch"
+
+# --- Social Links ---
+[params.social]
+github = "pabloagn"
+linkedin = "pablo-aguirre-nunez"
+
+# --- Ajax Search Engine ---
+[params.search]
+types = ["blog", "deep-dives", "projects", "tools"]
+
+# --- Markup Configuration ---
+[markup]
+
+[markup.goldmark]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.goldmark.extensions]
+table = true
+strikethrough = true
+linkify = true
+taskList = true
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 5
+ordered = false
+
+[markup.highlight]
+lineNos = true
+lineNumbersInTable = false
+noClasses = false
+codeFences = true
+guessSyntax = true
+tabWidth = 2

@@ -1,0 +1,33 @@
+<article class="card project-card">
+  {{ partial "projects/status.html" . }}
+  {{ partial "projects/symbol.html" (dict
+    "context" .
+    "boxClass" "symbol--card"
+    )
+  }}
+
+
+  <div class="card-body">
+    <p class="card-summary">{{ .Summary }}</p>
+
+    {{ if .Params.repository }}
+      {{ partial "buttons/triple.html" (dict
+        "left"  (dict "href" .Params.repository "text" "GitHub Repo")
+        "center"  (dict "href" .Params.docs "text" "Docs")
+        "right" (dict "href" .Permalink "text" "About")
+        )
+      }}
+
+
+      <div class="project-languages">
+        <h4>Languages</h4>
+        {{ partial "languages/language-stack.html" . }}
+      </div>
+    {{ end }}
+
+
+    <div class="card-footer">
+      {{ partial "tags/labels.html" . }}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,112 @@
+/* --- Headings --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--fg-primary);
+  font-family: var(--font-serif);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-line-height);
+  margin-bottom: var(--heading-spacing-bottom);
+  position: relative;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  margin-top: var(--space-lg);
+  padding-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  margin-top: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--fg-muted-darker);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  /* margin-top: var(--space-2xl); */
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  margin-top: var(--space-md);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-md);
+}
+
+h6 {
+  font-size: var(--font-size-md);
+  margin-top: var(--space-md);
+}
+
+/* --- Paragraphs --- */
+p {
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--body-weight);
+  line-height: var(--body-line-height);
+  margin-bottom: var(--space-md);
+  text-align: justify;
+}
+
+/* --- Inline Code --- */
+code {
+  font-family: var(--font-code);
+  font-size: var(--font-size-xs);
+}
+
+/* --- Links --- */
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-default) ease;
+}
+
+.single-content a:hover {
+  border-bottom-color: var(--accent-blue);
+}
+
+.single-content h1,
+.list-page h1,
+.single-page h1 {
+  border-bottom: 1px solid var(--fg-muted-darker);
+}
+
+/* Drop Caps */
+.drop-cap {
+  float: left;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 4.5rem;
+  height: 5.5rem;
+  font-size: 5rem;
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  margin: 0.1rem 1rem 0 0;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--fg-primary);
+  color: var(--fg-primary);
+  background: none;
+}
+
+/* Single Content Spacings */
+.single-content h2,
+.single-content h3,
+.single-content h4,
+.single-content h5 {
+  border-bottom: 1px solid var(--fg-muted-darker);
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+}

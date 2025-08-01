@@ -1,0 +1,40 @@
+.about-section .section-heading,
+.single-content h2,
+.single-content h3,
+.single-content h4,
+.single-content h5 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* spacing between bullet and text */
+}
+
+.header-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-xs);
+  margin-bottom: 5px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  color: var(--fg-primary);
+  /* text-decoration: none; */
+  /* vertical-align: baseline; */
+  height: 100%;
+}
+
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor,
+h5:hover .header-anchor {
+  color: var(--fg-primary);
+  opacity: 1;
+}
+
+.anchor-icon {
+  display: block;
+  fill: currentColor;
+  pointer-events: none;
+  transform: translateY(1px);
+  filter: drop-shadow(0 0 5px currentColor);
+}

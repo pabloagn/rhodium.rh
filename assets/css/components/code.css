@@ -1,0 +1,99 @@
+/* Inline code */
+code {
+  background-color: var(--bg-secondary);
+  border: solid 1px var(--bg-tertiary);
+  border-radius: var(--radius-default);
+  padding: 0.15rem 0.35rem;
+}
+
+/* Code block wrapper */
+.highlight {
+  background-color: transparent !important;
+  border-radius: var(--radius-default);
+  position: relative;
+  margin: var(--space-lg) 0 !important;
+  overflow: hidden;
+  border: 1px solid var(--bg-tertiary);
+  box-shadow: var(--shadow-md);
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+.highlight pre {
+  background: var(--bg-code) !important;
+  border: none;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  overflow-x: auto;
+}
+
+.highlight pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  display: block;
+  width: 100%;
+}
+
+/* Line numbers */
+.highlight .ln {
+  margin-right: var(--space-md);
+  color: var(--fg-muted);
+  user-select: none;
+}
+
+/* Line hover */
+.code-line {
+  padding: 0 var(--space-md);
+  transition: opacity 0.15s ease-in-out;
+  display: block;
+  min-height: 1.6em;
+  position: relative;
+}
+
+.highlight.is-hovered .code-line {
+  opacity: 0.4;
+}
+.highlight.is-hovered .code-line:hover {
+  opacity: 1;
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    rgba(127, 180, 202, 0.08) 15%,
+    rgba(127, 180, 202, 0.08) 85%,
+    transparent 100%
+  );
+}
+
+/* Copy‑button header */
+.code-header {
+  background-color: var(--bg-primary);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--bg-tertiary);
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Pulse glow for “header-hovered” */
+@keyframes pulse-glow {
+  0%, 100% {
+    border-color: var(--bg-tertiary);
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    border-color: rgba(127, 180, 202, 0.8);
+    box-shadow:
+      var(--shadow-md),
+      var(--shadow-glow),
+      inset 0 0 20px rgba(127, 180, 202, 0.1);
+  }
+}
+
+.highlight.header-hovered {
+  animation: pulse-glow 1.2s ease-in-out infinite !important;
+}

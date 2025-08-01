@@ -1,0 +1,80 @@
+.table-container {
+  position: relative;
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-default);
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Table styling */
+.table-scroll table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+}
+
+.table-scroll thead {
+  border-bottom: 1px solid var(--fg-primary);
+}
+
+.table-scroll th {
+  color: var(--fg-primary);
+  font-weight: 500;
+  padding: var(--space-md);
+  text-align: left;
+}
+
+.table-scroll td {
+  border-bottom: 1px solid var(--bg-tertiary);
+  color: var(--fg-secondary);
+  padding: var(--space-sm) var(--space-md);
+  vertical-align: top;
+}
+
+.table-scroll tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-scroll tbody tr:hover {
+  background-color: rgba(127, 180, 202, 0.07);
+  transition: all var(--transition-default) ease;
+}
+
+/* Scrollbar */
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-default);
+}
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-blue);
+}
+
+/* Gradient */
+.table-fade-gradient-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+.table-container.hide-fade .table-fade-gradient-right {
+  opacity: 0;
+}

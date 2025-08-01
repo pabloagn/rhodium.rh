@@ -1,0 +1,127 @@
+/* --- Lists (scoped to posts only) --- */
+.single-content ul,
+.single-content ol {
+  margin: var(--space-sm) 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Shared List Item Layout */
+.single-content ul li,
+.single-content ol li {
+  position: relative;
+  padding-left: calc(var(--space-md) + 1.2ch);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+/* --- Unordered Lists --- */
+.single-content ul li::before {
+  /* content: "∙"; */
+  content: "•";
+  color: var(--accent-yellow);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: var(--space-md);
+  text-align: center;
+}
+
+/* --- Ordered Lists --- */
+.single-content ol {
+  counter-reset: list-counter;
+}
+
+.single-content ol li {
+  counter-increment: list-counter;
+}
+
+.single-content ol li::before {
+  content: counter(list-counter) ".";
+  color: var(--accent-yellow);
+  font-weight: var(--font-weight-medium);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: var(--space-md);
+  text-align: right;
+}
+
+/* --- Optional nested bullets (commented) --- */
+/*
+.single-content ul ul li::before {
+  content: "◇";
+  color: var(--accent-blue);
+}
+
+.single-content ul ul ul li::before {
+  content: "◈";
+  color: var(--accent-green);
+}
+*/
+
+/* --- Task Lists (aligned with other list styles) --- */
+.single-content li:has(> input[type="checkbox"]) {
+  position: relative;
+  padding-left: calc(var(--space-md) + 1.2ch);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+  list-style: none;
+}
+
+/* remove pseudo-bullets */
+.single-content li:has(> input[type="checkbox"])::before {
+  content: none;
+}
+
+/* checkbox styling */
+.single-content li > input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  cursor: default;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid var(--fg-muted);
+  border-radius: var(--radius-default);
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  transition: border-color 0.1s ease-in-out;
+}
+
+/* custom glyph when checked */
+.single-content li > input[type="checkbox"]::before {
+  content: "⊹";
+  position: absolute;
+  font-size: 0.8em;
+  line-height: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%) scale(0);
+  color: var(--accent-green);
+  transition: transform 120ms ease-in-out;
+}
+
+.single-content li > input[type="checkbox"]:checked {
+  border-color: var(--accent-green);
+}
+
+.single-content li > input[type="checkbox"]:checked::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* fade completed task text */
+.single-content li:has(> input[type="checkbox"]:checked) {
+  color: var(--fg-muted);
+}
+
+/* strikethrough appearance */
+.single-content li s,
+.single-content li del {
+  color: inherit;
+  text-decoration: line-through;
+  text-decoration-color: rgba(228, 104, 118, 0.5);
+}
