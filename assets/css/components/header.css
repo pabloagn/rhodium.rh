@@ -11,7 +11,7 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-lg);
-  height: 4rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +36,7 @@
 }
 
 .nav-brand svg {
-  height: 2rem;
+  height: 3rem;
   width: auto;
   display: block;
   flex-shrink: 0;

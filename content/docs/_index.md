@@ -1,4 +1,4 @@
 ---
-title: "About"
+title: "Docs"
 layout: "coming-soon"
 ---

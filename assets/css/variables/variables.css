@@ -9,7 +9,7 @@
   --space-3xl: var(--size-7);
   --space-4xl: var(--size-8);
 
-  --navbar-height: var(--size-7);
+  --navbar-height: 5rem;
 
   /* Page Breaks */
   --break-sm: 480px;

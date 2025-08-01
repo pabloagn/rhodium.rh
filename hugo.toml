@@ -48,6 +48,7 @@ weight = 40
 description = "Rhodium - A Hypermodular NixOS System"
 author = "Pablo Aguirre"
 email = "pabloaguirrenck@protonmail.ch"
+repoURL = "https://github.com/pabloagn/rhodium"
 
 # --- Social Links ---
 [params.social]

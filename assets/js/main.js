@@ -15,8 +15,10 @@ import { autonumberHeadings } from "./modules/autonumberHeadings.js";
 import { enableTableOverflowFade } from "./modules/enableTableOverflowFade.js";
 import { enableTocFadeEffect } from "./modules/enableTocFadeEffect.js";
 import { applyDropCap } from "./modules/applyDropCap.js";
-import { tocTotree } from "./modules/tocToTree.js"
-import { decorateHeader } from "./modules/decorateHeader.js"
+import { tocTotree } from "./modules/tocToTree.js";
+import { decorateHeader } from "./modules/decorateHeader.js";
+
+import { initProjectHeroLines } from "./modules/initProjectHeroLines.js";
 
 // NOTE:
 // Be careful with the orderof function calling.
@@ -41,6 +43,7 @@ function boot() {
   applyDropCap();
   tocTotree();
   decorateHeader();
+  initProjectHeroLines();
 }
 
 import "./modules/datablock.js";
