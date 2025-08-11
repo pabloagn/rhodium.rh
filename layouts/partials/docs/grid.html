@@ -1,0 +1,14 @@
+{{ if .Pages }}
+  <div class="docs-grid">
+    {{ range .Pages.ByWeight }}
+      <a href="{{ .RelPermalink }}" class="docs-grid-item">
+        <h2>{{ .Title }}</h2>
+        {{ with .Description }}
+          <p>{{ . }}</p>
+        {{ else }}
+          <p>{{ .Summary | plainify | truncate 120 }}</p>
+        {{ end }}
+      </a>
+    {{ end }}
+  </div>
+{{ end }}

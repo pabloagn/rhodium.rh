@@ -1,0 +1,62 @@
+{{ $section := .Section }}
+{{ $currentPage := .CurrentPage }}
+{{ $level := .Level }}
+{{ $hasContent := or (gt (len $section.RegularPages) 0) (gt (len $section.Sections) 0) }}
+{{ $isActive := or (eq $currentPage.RelPermalink $section.RelPermalink) (hasPrefix $currentPage.RelPermalink $section.RelPermalink) }}
+{{ $nextLevel := add $level 1 }}
+{{ $id := replaceRE "/" "-" (replaceRE "^/|/$" "" $section.RelPermalink) }}
+
+{{ if $hasContent }}
+  <div
+    class="nav-section level-{{ $level }}{{ if $isActive }}expanded{{ end }}"
+    data-section-path="{{ $section.RelPermalink }}"
+    id="section-{{ $id }}"
+  >
+    <button
+      type="button"
+      class="nav-section-toggle{{ if eq $currentPage.RelPermalink $section.RelPermalink }}
+        active
+      {{ end }}"
+      aria-expanded="{{ if $isActive }}
+        true
+      {{ else }}
+        false
+      {{ end }}"
+      aria-controls="section-{{ $id }}-content"
+      data-path="{{ $section.RelPermalink }}"
+    >
+      <svg
+        class="chevron"
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      >
+        <path d="M4 2 L8 6 L4 10" />
+      </svg>
+      <span>{{ $section.Title }}</span>
+    </button>
+
+    <div
+      id="section-{{ $id }}-content"
+      class="nav-section-content {{ if not $isActive }}collapsed{{ end }}"
+    >
+      {{ range $section.RegularPages.ByWeight }}
+        <a
+          class="progress-link level-{{ $nextLevel }}{{ if eq $currentPage.RelPermalink .RelPermalink }}
+            active
+          {{ end }}"
+          href="{{ .RelPermalink }}"
+          data-slug="{{ .Params.slug | default (replaceRE `^[0-9]+[_-]` `` .File.ContentBaseName) }}"
+          >{{ .Title }}</a
+        >
+      {{ end }}
+
+      {{ range $section.Sections.ByWeight }}
+        {{ partial "docs/nav-section.html" (dict "Section" . "CurrentPage" $currentPage "Level" $nextLevel) }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

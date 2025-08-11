@@ -1,0 +1,25 @@
+{{ $currentPage := . }}
+{{ $docs := .Site.GetPage "section" "docs" }}
+
+
+<nav class="progress-nav tree-nav">
+  {{ if $docs }}
+    {{/* Render documentation sections (sub-folders) recursively */}}
+    {{ range $docs.Sections.ByWeight }}
+      {{ partial "docs/nav-section.html" (dict "Section" . "CurrentPage" $currentPage "Level" 0) }}
+    {{ end }}
+
+    {{/* Render top-level documentation pages (files in /docs/) */}}
+    {{ range $docs.RegularPages.ByWeight }}
+      <a
+        class="progress-link level-0{{ if eq $currentPage.RelPermalink .RelPermalink }}
+          active
+        {{ end }}"
+        href="{{ .RelPermalink }}"
+        data-slug="{{ .Params.slug | default (.File.ContentBaseName | replaceRE `^[0-9]+_` ``) }}"
+      >
+        {{ .Title }}
+      </a>
+    {{ end }}
+  {{ end }}
+</nav>

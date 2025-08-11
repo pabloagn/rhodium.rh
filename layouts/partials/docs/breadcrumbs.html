@@ -1,0 +1,31 @@
+{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+{{ $parts := split $url "/" }}
+{{ $breadcrumbs := slice }}
+{{ $currentPath := "/" }}
+
+
+<nav class="docs-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="docs-breadcrumbs-list">
+    <li class="docs-breadcrumbs-item">
+      <a href="/" class="docs-breadcrumbs-link">Home</a>
+    </li>
+
+    {{ range $index, $element := $parts }}
+      {{ if and $element (ne $element "docs") }}
+        {{ $currentPath = printf "%s%s/" $currentPath $element }}
+        {{ $page := $.Site.GetPage $currentPath }}
+        {{ if $page }}
+          <li class="docs-breadcrumbs-item">
+            {{ if eq $currentPath $.RelPermalink }}
+              <span class="docs-breadcrumbs-current">{{ $page.Title }}</span>
+            {{ else }}
+              <a href="{{ $page.RelPermalink }}" class="docs-breadcrumbs-link"
+                >{{ $page.Title }}</a
+              >
+            {{ end }}
+          </li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </ol>
+</nav>

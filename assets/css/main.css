@@ -45,6 +45,13 @@ body {
   padding: var(--space-4xl) var(--space-lg);
 }
 
+.container-top-docs {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-lg);
+}
+
 .container-mid {
   max-width: var(--max-width);
   margin-left: auto;

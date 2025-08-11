@@ -23,18 +23,6 @@ DEV_FLAGS   := "--buildDrafts --buildFuture --disableFastRender --bind 0.0.0.0"
 default:
     @just --list --unsorted
 
-# Create: New blog post
-post title:
-    {{HUGO}} new {{CONTENT_DIR}}/blog/{{title}}.md
-
-# Create: New deep dive
-deepdive title:
-    {{HUGO}} new {{CONTENT_DIR}}/deepdives/{{title}}.md
-
-# Create: New project
-project title:
-    {{HUGO}} new {{CONTENT_DIR}}/projects/{{title}}.md
-
 # Production server
 prod:
     @echo "Starting development server..."

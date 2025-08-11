@@ -10,10 +10,6 @@
     </header>
 
     <div class="list-content">
-      {{ partial "layout/grid.html" (dict
-        "Pages" .Paginator.Pages
-        "class" "grid--2"
-      ) }}
     </div>
 
     {{ partial "paginator.html" . }}

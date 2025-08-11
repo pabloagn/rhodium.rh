@@ -14,42 +14,48 @@ import { hamburgerMenu } from "./modules/hamburgerMenu.js";
 import { autonumberHeadings } from "./modules/autonumberHeadings.js";
 import { enableTableOverflowFade } from "./modules/enableTableOverflowFade.js";
 import { enableTocFadeEffect } from "./modules/enableTocFadeEffect.js";
-import { applyDropCap } from "./modules/applyDropCap.js";
 import { tocTotree } from "./modules/tocToTree.js";
 import { decorateHeader } from "./modules/decorateHeader.js";
-
+import { docsHub } from "./modules/docsHub.js";
 import { initProjectHeroLines } from "./modules/initProjectHeroLines.js";
 
-// NOTE:
-// Be careful with the orderof function calling.
-// e.g., autonumber always must go before anchors.
-function boot() {
-  // initSiteSearch();
+export function initializeContent(container = document) {
+  // Content-specific modules that need to run on new content
+  initCallouts(container);
+  initCodeDecor(container);
+  initCodeLineHover(container);
+  autonumberHeadings(container);
+  initHeaderAnchors(container);
+  enableTableOverflowFade(container);
+  enableDatablockSort(container);
+  initTimelineLines(container);
+  // decorateHeader(container);
+}
+
+// Global initialization (runs once for the entire page)
+function initializeGlobal() {
+  // Header and navigation
   initHeaderScroll();
-  initSmoothScroll();
-  initCodeDecor();
-  initCodeLineHover();
-  initCallouts();
-  progressScroll();
-  enableDatablockSort();
-  enableLanguageStackTooltips();
-  initTimelineLines();
-  autonumberHeadings();
-  initHeaderAnchors();
-  initHexagonPillars();
   hamburgerMenu();
-  enableTableOverflowFade();
+
+  // Global UI features
+  initSmoothScroll();
+  progressScroll();
+
+  // Global components
+  enableLanguageStackTooltips();
+  initHexagonPillars();
   enableTocFadeEffect();
-  applyDropCap();
   tocTotree();
-  decorateHeader();
   initProjectHeroLines();
+
+  // Docs system
+  docsHub();
 }
 
-import "./modules/datablock.js";
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", boot);
-} else {
-  boot();
+function boot() {
+  initializeGlobal();
+  initializeContent();
 }
+
+document.addEventListener("DOMContentLoaded", boot);

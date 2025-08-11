@@ -1,0 +1,28 @@
+{{ define "main" }}
+  <div class="docs-progress-wrapper">
+    <section class="docs-hub container-top-docs">
+      <aside class="docs-progress" aria-label="Docs">
+        {{ partial "docs/nav.html" . }}
+      </aside>
+
+      <main class="docs-main" id="docs-main" tabindex="-1">
+        <article
+          class="doc-article single-content"
+          data-slug="{{ .File.ContentBaseName | replaceRE `^[0-9]+_` `` }}"
+          data-permalink="{{ .RelPermalink }}"
+        >
+          <h1>{{ .Title }}</h1>
+          {{ with .Description }}
+            <p class="doc-lead">{{ . }}</p>
+          {{ end }}
+
+          {{ .Content }}
+        </article>
+      </main>
+
+      <aside class="docs-toc" id="docs-toc" aria-label="On this page"></aside>
+    </section>
+
+    {{ partial "progress.html" . }}
+  </div>
+{{ end }}

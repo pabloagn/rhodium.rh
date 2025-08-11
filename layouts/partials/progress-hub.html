@@ -1,0 +1,33 @@
+<nav class="progress-nav">
+  {{ $currentPage := . }}
+  {{ range .Site.Sections }}
+    {{ if eq .Section "docs" }}
+      {{ range .Sections }}
+        <div class="progress-section">
+          <h3 class="progress-section-title">{{ .Title }}</h3>
+          {{ range .Pages.ByWeight }}
+            <a
+              class="progress-link"
+              data-slug="{{ .File.BaseFileName }}"
+              data-href="{{ .RelPermalink }}"
+              href="{{ .RelPermalink }}"
+            >
+              {{ .Title }}
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+      {{/* Also show top-level pages if any */}}
+      {{ range .Pages.ByWeight }}
+        <a
+          class="progress-link"
+          data-slug="{{ .File.BaseFileName }}"
+          data-href="{{ .RelPermalink }}"
+          href="{{ .RelPermalink }}"
+        >
+          {{ .Title }}
+        </a>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</nav>

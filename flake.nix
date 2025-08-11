@@ -37,15 +37,6 @@
               types = [ "file" ];
               verbose = true;
             };
-            generate-langstats = {
-              enable = true;
-              entry = "${pyEnv}/bin/python scripts/generate-langstats.py";
-              language = "system";
-              pass_filenames = false;
-              files = ".*";
-              types = [ "file" ];
-              verbose = true;
-            };
           };
         };
       in

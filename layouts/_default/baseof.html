@@ -42,6 +42,7 @@
       (resources.Get "css/layout/list.css")
       (resources.Get "css/layout/about.css")
       (resources.Get "css/layout/project.css")
+      (resources.Get "css/layout/docs.css")
       (resources.Get "css/layout/responsive.css")
       (resources.Get "css/components/header.css")
       (resources.Get "css/components/footer.css")
@@ -93,13 +94,6 @@
       }
     </style>
 
-    {{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true) }}
-    <script
-      src="{{ $js.RelPermalink }}"
-      integrity="{{ $js.Data.Integrity }}"
-      defer
-    ></script>
-
     {{ if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
 
 
@@ -119,5 +113,12 @@
     </main>
 
     {{ partial "footer.html" . }}
+
+    {{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true) }}
+    <script
+      src="{{ $js.RelPermalink }}"
+      integrity="{{ $js.Data.Integrity }}"
+      defer
+    ></script>
   </body>
 </html>

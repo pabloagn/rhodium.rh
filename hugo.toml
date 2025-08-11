@@ -10,44 +10,61 @@ buildExpired = false
 enableGitInfo = true
 enableRobotsTXT = true
 
+# --- Permalinks ---
+[permalinks]
+"docs/*" = "/docs/:slug/"  # For section pages
+"docs/**" = "/docs/:sections/:slug/"  # For regular pages
+# docs = "/:sections/:slug/"
+# "docs/**" = "/docs/:slug/"
+
 # --- Output Formats ---
 [outputs]
 home = ["HTML", "RSS", "JSON"]
-page = ["HTML"]
+page = ["HTML", "Article"]
 section = ["HTML", "RSS"]
 taxonomy = ["HTML", "RSS"]
 term = ["HTML", "RSS"]
 
+[mediaTypes]
+[mediaTypes."text/html"]
+baseName = "_content"
+isPlainText = false
+suffixes = ["html"]
+
+[outputFormats]
+[outputFormats.Article]
+mediaType = "text/html"
+baseName = "_content"
+permalinkable = true
+
 [pagination]
 pagerSize = 12
+
+[frontmatter]
+lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
 
 # --- Menu Configuration ---
 [menu]
 [[menu.main]]
-name = "Home"
-url = "/"
-weight = 10
-
-[[menu.main]]
 name = "Docs"
 url = "/docs/"
-weight = 20
+weight = 10
 
 [[menu.main]]
 name = "About"
 url = "/about/"
-weight = 30
+weight = 20
 
 [[menu.main]]
 name = "Contact"
 url = "/contact/"
-weight = 40
+weight = 30
 
 # --- Site Parameters ---
 [params]
 description = "Rhodium - A Hypermodular NixOS System"
 author = "Pablo Aguirre"
-email = "pabloaguirrenck@protonmail.ch"
+email = "pablo.aguirre@solenoidlabs.com"
 repoURL = "https://github.com/pabloagn/rhodium"
 
 # --- Social Links ---
@@ -57,7 +74,7 @@ linkedin = "pablo-aguirre-nunez"
 
 # --- Ajax Search Engine ---
 [params.search]
-types = ["blog", "deep-dives", "projects", "tools"]
+types = ["docs"]
 
 # --- Markup Configuration ---
 [markup]

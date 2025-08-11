@@ -1,31 +1,32 @@
 import { throttle } from "../utils.js";
 
+let cleanup;
 export function progressScroll() {
   const bar = document.querySelector(".scroll-indicator-bar");
   const border = document.querySelector(".glass-border");
+  const scroller = document.querySelector(".docs-progress-wrapper");
 
-  if (!bar || !border) return;
+  if (!bar || !border || !scroller) return; // lists will bail out
 
-  // === CONFIGURABLE PARAMETERS ===
-  const THROTTLE_MS = 20;
-  const EASE_SPEED = 0.2; // Lower is smoother (e.g., 0.05–0.15)
-  const COLOR_SPEED = 2.5; // Control how fast the gradient shifts
+  if (cleanup) cleanup();
 
-  let current = 0;
+  const THROTTLE_MS = 20,
+    EASE = 0.2,
+    SHIFT = 2.5;
+  let cur = 0;
+  const lerp = (a, b, t) => a + (b - a) * t;
 
-  const lerp = (start, end, t) => start + (end - start) * t;
-
-  const updateProgress = () => {
-    const docHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-    const target = Math.min(Math.max(window.scrollY / docHeight, 0), 1) * 100;
-
-    current = lerp(current, target, EASE_SPEED);
-
-    bar.style.width = `${current}%`;
-    border.style.backgroundPosition = `${current * COLOR_SPEED}% 50%`;
+  const update = () => {
+    const max = scroller.scrollHeight - scroller.clientHeight;
+    const ratio = max > 0 ? scroller.scrollTop / max : 0;
+    const target = Math.min(Math.max(ratio, 0), 1) * 100;
+    cur = lerp(cur, target, EASE);
+    bar.style.width = `${cur}%`;
+    border.style.backgroundPosition = `${cur * SHIFT}% 50%`;
   };
 
-  window.addEventListener("scroll", throttle(updateProgress, THROTTLE_MS));
-  updateProgress();
+  const onScroll = throttle(update, THROTTLE_MS);
+  scroller.addEventListener("scroll", onScroll);
+  cleanup = () => scroller.removeEventListener("scroll", onScroll);
+  update();
 }
