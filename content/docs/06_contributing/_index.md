@@ -1,8 +1,25 @@
 ---
 title: "Contributing"
-description: "Learn how you can contribute to the Rhodium project, from reporting bugs to submitting code."
+description: "How to contribute to the Rhodium project."
 type: "docs"
 url: "/docs/contributing/"
 weight: 6
 ---
-We welcome contributions from everyone! This section outlines how you can help improve Rhodium. Whether it's through reporting issues, suggesting features, or writing code, your input is valuable.
+
+Rhodium is an open source project. Contributions are welcome in the form of bug reports, feature requests, and code contributions.
+
+## Ways to Contribute
+
+| Type | Description |
+|------|-------------|
+| Bug Reports | Report issues with existing functionality |
+| Feature Requests | Suggest new features or improvements |
+| Documentation | Improve or expand documentation |
+| Code | Submit bug fixes or new features |
+| Testing | Test on different hardware configurations |
+
+## In This Section
+
+- [How to Contribute](/docs/contributing/how-to-contribute/) - Contribution guidelines
+- [Code of Conduct](/docs/contributing/code-of-conduct/) - Community standards
+- [Development Setup](/docs/contributing/development-setup/) - Local development environment

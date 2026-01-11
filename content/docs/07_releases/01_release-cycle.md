@@ -1,27 +1,121 @@
 ---
 title: "Release Cycle"
-description: "Guidelines for contributing to the project, including reporting issues and suggesting features."
+description: "Rhodium versioning and release management."
 type: "docs"
 url: "/docs/releases/release-cycle/"
 weight: 1
 ---
 
-## Lorem
+## Versioning
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Rhodium uses a date-based versioning scheme aligned with NixOS releases.
 
-### Ipsum
+### Version Format
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+```
+YYYY.MM.PATCH
+```
 
-### Dolor
+Example: `2025.11.1`
 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+- `YYYY.MM` - NixOS release version
+- `PATCH` - Incremental fixes within that release
 
-## Sit
+## Update Channels
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+### Stable Channel (`nixpkgs`)
 
-## Amet
+- Follows NixOS stable releases (currently 25.11)
+- Updated with each NixOS point release
+- Used for system-critical packages
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+### Unstable Channel (`nixpkgs-unstable`)
+
+- Rolling updates
+- Used for actively-developed tools:
+  - Neovim and plugins
+  - Yazi and plugins
+  - Helix
+  - Language servers
+
+### Shell Channel (`nixpkgs-shell`)
+
+- Matches stable version
+- Used for development shell packages
+- Separate to allow independent updates
+
+## Update Frequency
+
+| Component | Frequency |
+|-----------|-----------|
+| Flake inputs | Weekly recommended |
+| NixOS version | Every 6 months |
+| Documentation | As needed |
+
+## Update Process
+
+### Weekly Updates
+
+```bash
+# Update all inputs
+just update
+just switch host_001
+
+# Or update specific input
+just update-input nixpkgs-unstable
+just switch host_001
+```
+
+### NixOS Version Upgrade
+
+When new NixOS release is available:
+
+1. Update flake inputs in `flake.nix`
+2. Review breaking changes in release notes
+3. Update module configurations if needed
+4. Test with `just build-dry`
+5. Apply with `just switch`
+
+### Rollback
+
+If update breaks system:
+
+```bash
+# Immediate rollback
+just rollback
+
+# Or select previous generation at boot
+```
+
+## Release Notes
+
+Major changes are documented in git commits and the changelog directory.
+
+### Commit Convention
+
+- `feat:` New features
+- `fix:` Bug fixes
+- `docs:` Documentation
+- `refactor:` Code changes without feature changes
+- `chore:` Maintenance
+
+## Compatibility
+
+### Hardware Support
+
+Tested on:
+- AMD GPU (primary)
+- Intel integrated graphics
+- NVIDIA (supported, less tested)
+
+### Display Servers
+
+- Wayland (Niri) - Primary, fully supported
+- X11 - Via xwayland-satellite for legacy apps
+
+### Host Configurations
+
+| Host | Type | GPU | Status |
+|------|------|-----|--------|
+| host_001 | Desktop | AMD | Active |
+| host_002 | Laptop | Intel | Active |

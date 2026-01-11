@@ -1,9 +1,14 @@
 ---
 title: "Appendix"
-description: "Additional information including project showcase and attributions."
+description: "Showcase and attributions."
 type: "docs"
 url: "/docs/appendix/"
 weight: 5
 ---
 
-This section contains additional information related to the project, such as visual showcases and credits to inspirational projects.
+Additional resources including visual showcase and project attributions.
+
+## In This Section
+
+- [Showcase](/docs/appendix/showcase/) - Visual demonstrations
+- [Attributions](/docs/appendix/attributions/) - Credits and inspirations

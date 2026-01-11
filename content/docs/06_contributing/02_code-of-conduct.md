@@ -1,22 +1,42 @@
 ---
 title: "Code of Conduct"
-description: "Our pledge to foster an open and welcoming environment for all contributors."
+description: "Community standards for Rhodium contributors."
 type: "docs"
 url: "/docs/contributing/code-of-conduct/"
 weight: 2
 ---
+
 ## Our Pledge
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone.
+We are committed to providing a welcoming and harassment-free environment for everyone, regardless of background or identity.
 
 ## Our Standards
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Examples of behavior that contributes to a positive environment include:
+### Expected Behavior
 
-- Demonstrating empathy and kindness toward other people
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
+- Be respectful and considerate
+- Accept constructive criticism gracefully
+- Focus on what is best for the project
+- Show empathy toward other contributors
+
+### Unacceptable Behavior
+
+- Harassment or discrimination
+- Personal attacks
+- Publishing others' private information
+- Trolling or inflammatory comments
 
 ## Enforcement
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Community leaders are responsible for clarifying and enforcing our standards and will take appropriate and fair corrective action.
+Project maintainers will:
+
+1. Remove, edit, or reject contributions that violate this code
+2. Ban temporarily or permanently any contributor for inappropriate behavior
+
+## Reporting
+
+Report violations to project maintainers via private message or email.
+
+## Attribution
+
+This Code of Conduct is adapted from the Contributor Covenant, version 2.1.

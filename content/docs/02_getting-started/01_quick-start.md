@@ -1,47 +1,128 @@
 ---
 title: "Quick Start"
-description: "Get up and running with Rhodium quickly using the built-in justfile or direct Nix flake commands."
+description: "Fastest path to a running Rhodium system."
 type: "docs"
 url: "/docs/getting-started/quick-start/"
 weight: 1
 ---
 
-## Installation Methods
+This guide assumes you have a working NixOS installation with flakes enabled.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. There are two primary ways to install and manage the system.
+## Clone the Repository
 
-## Using Just
+```bash
+git clone https://github.com/pabloagn/rhodium.git
+cd rhodium
+```
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+## Choose Your Host
 
-### Basic Commands
+Rhodium supports multiple host configurations. Existing hosts:
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+| Host | Type | Description |
+|------|------|-------------|
+| `host_001` | Desktop | Primary workstation (AMD GPU) |
+| `host_002` | Laptop | Portable system (Intel GPU) |
+
+## Build and Switch
+
+### Using Just (Recommended)
+
+```bash
+# Fast rebuild with minimal output
+just switch-fast host_001
+
+# Standard rebuild with full output
+just switch host_001
+```
+
+### Using Nix Directly
+
+```bash
+# Build and switch
+sudo nixos-rebuild switch --flake .#host_001
+
+# Build without switching (test first)
+sudo nixos-rebuild build --flake .#host_001
+```
+
+## Verify Installation
+
+After switching:
+
+```bash
+# Check generation
+just generation
+
+# Verify system health
+just health
+```
+
+## Common Commands
+
+### Build Commands
+
+| Command | Description |
+|---------|-------------|
+| `just switch-fast <host>` | Fast rebuild, minimal output |
+| `just switch <host>` | Standard rebuild |
+| `just build <host>` | Build only, no activation |
+| `just boot <host>` | Build and prepare for next boot |
+| `just build-dry <host>` | Show what would be built |
+| `just build-dev <host>` | Verbose development build |
 
 ### Update Commands
 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+| Command | Description |
+|---------|-------------|
+| `just update` | Update all flake inputs |
+| `just update-input <name>` | Update specific input |
+| `just update-stable` | Update stable nixpkgs only |
+| `just update-unstable` | Update unstable nixpkgs only |
 
 ### Maintenance Commands
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+| Command | Description |
+|---------|-------------|
+| `just gc` | Full garbage collection |
+| `just gc-keep N` | Keep last N generations |
+| `just gc-days N` | Remove generations older than N days |
+| `just rollback` | Roll back to previous generation |
+| `just health` | Check system health |
+| `just repair-store` | Repair Nix store |
 
-## Using Nix Directly
+### Development Commands
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni.
+| Command | Description |
+|---------|-------------|
+| `just check` | Validate flake syntax |
+| `just fmt` | Format all Nix files |
+| `just show-deps` | Show flake dependency tree |
+| `just flake-info` | Show flake metadata |
 
-### Quick Installation
+### Diagnostics Commands
 
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+| Command | Description |
+|---------|-------------|
+| `just find-backups` | Find Home Manager backup files |
+| `just find-orphans` | Find orphaned config directories |
+| `just find-untracked` | Find untracked files |
+| `just clean-backups` | Remove backup files |
+| `just clean-orphans` | Remove orphaned directories |
 
-### Safe Testing Process
+## Rollback
 
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+If something breaks:
 
-## First Steps After Installation
+```bash
+# Immediate rollback
+just rollback
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.
+# Or boot into previous generation from bootloader
+```
 
-## Troubleshooting
+## Next Steps
 
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi.
+- [Installation](/docs/getting-started/installation/) - Detailed installation for new systems
+- [First Steps](/docs/getting-started/first-steps/) - Configure your user preferences
+- [System Guide](/docs/system-guide/) - Understand the module system

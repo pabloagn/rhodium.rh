@@ -1,8 +1,23 @@
 ---
 title: "Releases"
-description: "Everything you need to know regarding release cadence, current pipeline, future integrations, and more."
+description: "Release cycle, versioning, and development roadmap."
 type: "docs"
 url: "/docs/releases/"
-weight: 6
+weight: 7
 ---
-View the complete Rhodium development & release cycle.
+
+Rhodium follows a rolling release model aligned with NixOS release cycles.
+
+## Current Status
+
+| Component | Version |
+|-----------|---------|
+| NixOS | 25.11 |
+| Home Manager | 25.11 |
+| Niri | Latest from flake |
+| Neovim | Unstable channel |
+
+## In This Section
+
+- [Release Cycle](/docs/releases/release-cycle/) - Version management and updates
+- [Pipeline](/docs/releases/pipeline/) - Development workflow and roadmap

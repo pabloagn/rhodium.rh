@@ -1,6 +1,6 @@
 ---
 title: "Showcase"
-description: "A visual demonstration of Rhodium's capabilities, desktop environment, and aesthetics."
+description: "Visual demonstration of Rhodium."
 type: "docs"
 url: "/docs/appendix/showcase/"
 weight: 1
@@ -8,24 +8,70 @@ weight: 1
 
 ## Desktop Environment
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
 ### Clean Workspace
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-### Multi-Monitor Setup
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Niri provides a scrollable-tiling layout with minimal visual chrome:
+
+- No window decorations (CSD disabled)
+- Transparent backgrounds with blur
+- Consistent Kanso color scheme
+- 12px gaps between windows
+
+### Waybar Status Bar
+
+Top bar with:
+- Left: Workspace indicators
+- Center: Clock with timezone support
+- Right: System monitors, audio, tray
+
+### Application Launcher
+
+Fuzzel provides fast application search with Wayland-native rendering.
 
 ## Development Environment
 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### Neovim
 
-### Code Editing
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+Full IDE experience:
+- LSP integration with 50+ language servers
+- Telescope for fuzzy finding
+- Git integration via Gitsigns
+- Kanso theme
+
+### Terminal
+
+Kitty with:
+- GPU-accelerated rendering
+- Image preview support
+- Daemon mode for instant spawning
+
+### File Management
+
+Yazi terminal file manager:
+- Async I/O
+- Image previews
+- Plugin ecosystem
+- Git integration
 
 ## System Monitoring
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+### Waybar Thermals
 
-### Resource Usage
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+Real-time monitoring of:
+- CPU temperature
+- GPU temperature
+- Fan speed
+- Power consumption
+- Battery status
+
+### btop
+
+Full system monitor for detailed resource analysis.
+
+## Theme
+
+Kanso color scheme across all applications:
+- Warm dark background
+- Earth-tone accents
+- Consistent color mapping
+- Berkeley Mono font
